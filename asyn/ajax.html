@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+    <button id="btn">CLICK</button>
+    <div id="list"></div>
+    <script>
+        let btn = document.querySelector('#btn')
+        btn.addEventListener('click',()=> {
+            let xhr = new XMLHttpRequest()
+            xhr.open('GET','https://restcountries.com/v3.1/all',true);
+            xhr.onload = ()=> {
+                if (xhr.status === 200){
+                    let countries =JSON.parse(xhr.responseText)
+                    countries.forEach(country=> {
+                        let CountryName = document.createElement('div');
+                        let CountryImg = document.createElement('img')
+                        CountryName.innerHTML = country.name.common;
+                        CountryImg.src = country.flags.png;
+                        document.querySelector('#list').appendChild(CountryName)
+                        document.querySelector('#list').appendChild(CountryImg)
+                        
+                    })
+                }
+            }
+            xhr.send()
+        })
+    </script>
+</body>
+</html>

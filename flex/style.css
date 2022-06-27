@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    border: 1px solid lawngreen;
+}
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin: 10px;
+    text-align: center;
+}
